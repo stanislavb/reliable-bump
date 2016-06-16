@@ -1,6 +1,13 @@
 {
-  "name": "reliable-bump",
   "version": "0.0.0",
+  "name": "reliable-bump",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stanislavb/reliable-bump"
+  },
+  "bugs": {
+    "url": "https://github.com/stanislavb/reliable-bump/issues"
+  },
   "description": "Bumps node package version if necessary",
   "main": ".bin/bump.js",
   "bin": ".bin/bump.js",

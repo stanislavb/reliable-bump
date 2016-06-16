@@ -89,6 +89,7 @@ function getLatestVersion() {
  * @param {semver} version
  * @param {string} message Git commit message
  */
+// eslint-disable-next-line no-unused-vars
 function tagGitVersion(version, message) {
   const gitTagPrefix = 'v';
   const versionTag = `${gitTagPrefix}${version}`;
@@ -103,6 +104,7 @@ function tagGitVersion(version, message) {
  * Creates a git commit with the changed files.
  * @param {string} message Git commit message
  */
+// eslint-disable-next-line no-unused-vars
 function gitCommit(message) {
   /**
    * Add all changed files to git. Should be only package.json and
@@ -132,12 +134,13 @@ function setNpmVersion(version) {
  * Makes sure the code repository gets a new version tag.
  */
 function main() {
-  const messageTemplate = 'Release %s';
+  // const messageTemplate = 'Release %s';
+  // const commitMessage = messageTemplate.replace(/%s/g, latestVersion);
   const latestVersion = getLatestVersion();
-  const commitMessage = messageTemplate.replace(/%s/g, latestVersion);
+
   setNpmVersion(latestVersion);
-  //gitCommit(commitMessage);
-  //tagGitVersion(latestVersion, commitMessage);
+  // gitCommit(commitMessage);
+  // tagGitVersion(latestVersion, commitMessage);
 }
 
 main();
