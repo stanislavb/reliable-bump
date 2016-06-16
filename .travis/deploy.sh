@@ -11,6 +11,7 @@ fi
 #git config user.email "$COMMIT_AUTHOR_EMAIL"
 
 # Minimum viable bump
+npm config set git-tag-version true
 npm version patch
 
 # Push to remote
