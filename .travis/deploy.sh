@@ -10,9 +10,8 @@ fi
 #git config user.name "Travis CI"
 #git config user.email "$COMMIT_AUTHOR_EMAIL"
 
-# Minimum viable bump
-npm config set git-tag-version true
-npm version patch
+# Use our own code
+./bin/bump.js
 
 # Push to remote
 git push --verbose --follow-tags deploy master

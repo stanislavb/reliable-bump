@@ -91,7 +91,8 @@ function getLatestVersion() {
  */
 // eslint-disable-next-line no-unused-vars
 function tagGitVersion(version, message) {
-  const gitTagPrefix = 'v';
+  /** npm has default 'v' prefix for tags. We don't. */
+  const gitTagPrefix = '';
   const versionTag = `${gitTagPrefix}${version}`;
 
   const gitTagProc = spawn('git', ['tag', '-a', versionTag, '-m', message]);
@@ -108,7 +109,7 @@ function tagGitVersion(version, message) {
 function gitCommit(message) {
   /**
    * Add all changed files to git. Should be only package.json and
-   * maybe npm-shrinkwrap.json
+   * maybe npm-shrinkwrap.json.
    */
   const gitAddProc = spawn('git', ['add', '.']);
   if (gitAddProc.status !== 0) {
@@ -134,13 +135,13 @@ function setNpmVersion(version) {
  * Makes sure the code repository gets a new version tag.
  */
 function main() {
-  // const messageTemplate = 'Release %s';
-  // const commitMessage = messageTemplate.replace(/%s/g, latestVersion);
+  const messageTemplate = 'Release %s';
   const latestVersion = getLatestVersion();
+  const commitMessage = messageTemplate.replace(/%s/g, latestVersion);
 
   setNpmVersion(latestVersion);
-  // gitCommit(commitMessage);
-  // tagGitVersion(latestVersion, commitMessage);
+  gitCommit(commitMessage);
+  tagGitVersion(latestVersion, commitMessage);
 }
 
 main();
