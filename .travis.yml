@@ -4,6 +4,10 @@ node_js:
 
 # encrypted environment variables are not available for pull requests from forks
 before_deploy:
+- git config user.name "Travis CI"
+- git config user.email "notifications@travis-ci.org"
+- git checkout master
+- git status
 - openssl aes-256-cbc -K $encrypted_9fb7d9742664_key -iv $encrypted_9fb7d9742664_iv
   -in ./.travis/deploy_key.enc -out ./.travis/deploy_key -d
 - eval "$(ssh-agent -s)" #start the ssh agent

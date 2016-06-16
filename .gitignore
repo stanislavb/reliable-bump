@@ -1,2 +1,4 @@
 node_modules/
 npm-debug.log
+# When travis decrypts the private key, do not accidently check it in
+.travis/deploy_key
