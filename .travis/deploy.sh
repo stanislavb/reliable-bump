@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 
 # Travis setup procedure
 # gem install travis
@@ -17,9 +17,11 @@ fi
 # Travis works in "detached head" mode, so we need to fix it first.
 git fetch --all
 git reset --hard deploy/master
+git status
 
 # Use our own code
 ./bin/bump.js
+git status
 
 # Push to remote
 git push --verbose --follow-tags deploy master

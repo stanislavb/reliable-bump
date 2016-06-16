@@ -97,8 +97,8 @@ function tagGitVersion(version, message) {
   const gitTagProc = spawn('git', ['tag', '-a', versionTag, '-m', message]);
   if (gitTagProc.status !== 0) {
     console.log('git tag failed');
-    console.log(gitTagProc.stdout.toString());
   }
+  console.log(gitTagProc.stdout.toString());
 }
 
 /**
@@ -114,13 +114,13 @@ function gitCommit(message) {
   const gitAddProc = spawn('git', ['add', '.']);
   if (gitAddProc.status !== 0) {
     console.log('git add . failed');
-    console.log(gitAddProc.stdout.toString());
   }
+  console.log(gitAddProc.stdout.toString());
   const gitCommitProc = spawn('git', ['commit', '-m', message]);
   if (gitCommitProc.status !== 0) {
     console.log('git commit failed');
-    console.log(gitCommitProc.stdout.toString());
   }
+  console.log(gitCommitProc.stdout.toString());
 }
 
 /**
@@ -131,8 +131,8 @@ function setNpmVersion(version) {
   const npmVersionProc = spawn('npm', ['--no-git-tag-version', 'version', version]);
   if (npmVersionProc.status !== 0) {
     console.log('npm version failed');
-    console.log(npmVersionProc.stdout.toString());
   }
+  console.log(npmVersionProc.stdout.toString());
 }
 
 /**
