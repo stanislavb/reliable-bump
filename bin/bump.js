@@ -2,7 +2,6 @@
 const spawn = require('child_process').spawnSync;
 const semver = require('semver');
 const fs = require('fs');
-const npm = require('npm');
 
 /**
  * Checks whether value is not null.
@@ -19,11 +18,11 @@ function isNotNull(value) {
 function getGitDescribeVersion() {
   let gitDescribeVersion = null;
 
-  const proc = spawn('git', ['describe', '--abbrev=0']);
-  if (proc.status !== 0) {
+  const gitDescribeProc = spawn('git', ['describe', '--abbrev=0']);
+  if (gitDescribeProc.status !== 0) {
     console.log('Did not find a version tag in git');
   } else {
-    const procStdout = proc.stdout.toString();
+    const procStdout = gitDescribeProc.stdout.toString();
     gitDescribeVersion = semver.clean(procStdout);
     console.log(`${gitDescribeVersion} in git describe`);
   }
@@ -98,6 +97,7 @@ function tagGitVersion(version, message) {
   const gitTagProc = spawn('git', ['tag', '-a', versionTag, '-m', message]);
   if (gitTagProc.status !== 0) {
     console.log('git tag failed');
+    console.log(gitTagProc.stdout.toString());
   }
 }
 
@@ -114,10 +114,12 @@ function gitCommit(message) {
   const gitAddProc = spawn('git', ['add', '.']);
   if (gitAddProc.status !== 0) {
     console.log('git add . failed');
+    console.log(gitAddProc.stdout.toString());
   }
   const gitCommitProc = spawn('git', ['commit', '-m', message]);
   if (gitCommitProc.status !== 0) {
     console.log('git commit failed');
+    console.log(gitCommitProc.stdout.toString());
   }
 }
 
@@ -126,9 +128,11 @@ function gitCommit(message) {
  * @param {semver} version
  */
 function setNpmVersion(version) {
-  npm.load({ loaded: false }, () => {
-    npm.commands.version([version]);
-  });
+  const npmVersionProc = spawn('npm', ['--no-git-tag-version', 'version', version]);
+  if (npmVersionProc.status !== 0) {
+    console.log('npm version failed');
+    console.log(npmVersionProc.stdout.toString());
+  }
 }
 
 /**

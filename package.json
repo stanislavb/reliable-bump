@@ -17,8 +17,7 @@
   "author": "Stanislav Blokhin",
   "license": "Unlicense",
   "dependencies": {
-    "semver": "5.1.0",
-    "npm": "3.9.5"
+    "semver": "5.1.0"
   },
   "devDependencies": {
     "eslint": "2.12.0",
