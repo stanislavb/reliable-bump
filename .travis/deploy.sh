@@ -14,4 +14,4 @@ fi
 npm version patch
 
 # Push to remote
-git push deploy
+git push --verbose --follow-tags deploy master
