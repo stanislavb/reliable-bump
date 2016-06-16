@@ -1,4 +1,5 @@
 # Reliable version bump
+![Travis CI status](https://api.travis-ci.org/stanislavb/reliable-bump.svg)
 
 ## Goal
 Automate as much of app versioning as reasonable to lower development overhead.
