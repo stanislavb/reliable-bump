@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash
 
 # Travis setup procedure
 # gem install travis
