@@ -9,8 +9,11 @@
     "url": "https://github.com/stanislavb/reliable-bump/issues"
   },
   "description": "Bumps node package version if necessary",
-  "main": ".bin/bump.js",
-  "bin": ".bin/bump.js",
+  "directories": {
+    "bin": "./bin"
+  },
+  "main": "./bin/bump.js",
+  "bin": "./bin/bump.js",
   "scripts": {
     "test": "DEBUG=eslint:cli-engine eslint **/*.js"
   },

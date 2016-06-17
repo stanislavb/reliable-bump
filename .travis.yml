@@ -1,4 +1,5 @@
 language: node_js
+
 node_js:
 - '6'
 
@@ -10,7 +11,7 @@ before_deploy:
 - git status
 - openssl aes-256-cbc -K $encrypted_9fb7d9742664_key -iv $encrypted_9fb7d9742664_iv
   -in ./.travis/deploy_key.enc -out ./.travis/deploy_key -d
-- eval "$(ssh-agent -s)" #start the ssh agent
+- eval "$(ssh-agent -s)"  # start the ssh agent
 - chmod 600 .travis/deploy_key
 - ssh-add .travis/deploy_key
 - git remote add deploy git@github.com:${TRAVIS_REPO_SLUG}.git
@@ -21,3 +22,7 @@ deploy:
   skip_cleanup: true
   on:
     branch: master
+
+env:
+  global:
+    secure: G5WB+RboozDiohuK73LKXpKf2GR7hC9jXn7htFD0rUXSk0oPuk85Rqt8bnx/qVyvTt4ljDM0YTI5PUYMpJcF/D8IZ+GrMpTAofbr2C8OffDCqMo7g3rfPJrX1gvyu2C0ijet62eQVnMwoGiiK5qvOoj/6+FcrLgUq16GD1OXmLFdHRZhnE9fBwFyGp7HsEutuHSnhk0QKeKDlEC2Bkuaxf+mKaa/cC2lZLh/7+g+8jFcBJW882LHs6ErsaA4ddCqpiLhdGzLhdT4fG6jPtGLf4nrRyOGiC8/FDGJabOUC/aMfU2e6D6qcHL5MrH7MbErZMzsd0QmX0gZRb3BWeN3TnB2hISXEtLxBIHo/O//qpKN3tNPva4rzbi2c7wbl5gKXyplNkblZI1dMetqSDgyCjG4TcV2KkXJYQ2iePOBvvUJp+6z1NWoLkc89Whm4WVtK9hTWE3VVdwpiAnd61iB4B8TM3B6MR7XTmGo2siE+z+poGsc51KdYSSSDPSMNxqobQm0BJhMMsalvb51d/H3k72ckXYwJzrn8WcErPjoPQ5cKoviXJgaqHDd+pK7vebInCIFk7Lo1cWICsBwoNxv/98zR4Dl0JVzSqm8DYrYNonMRyFNLdpkFbVGGdsgCP8zTRcZ1+V0I68zFp4+WgEuDo5a0y5tkZ1lh/FXuO1qdBA=

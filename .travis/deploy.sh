@@ -19,7 +19,7 @@ fi
 # will trigger another Travis build. To avoid an infinite bump loop,
 # check if HEAD already is tagged with a semver tag.
 git tag --contains HEAD | grep -q "[0-9]*\.[0-9]*\.[0-9]*"
-if [[ $? -eq 0 ]]; then
+if [ $? -eq 0 ]; then
   echo "HEAD is already tagged with a version. Doing nothing."
 else
   # Use our own code
@@ -28,4 +28,8 @@ else
 
   # Push to remote
   git push --verbose --follow-tags deploy master
+  if [ $? -eq 0 ]; then
+    echo "//registry.npmjs.org/:_authToken=${NPM_AUTH_TOKEN}" > ~/.npmrc
+    npm publish
+  fi
 fi
