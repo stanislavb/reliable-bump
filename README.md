@@ -1,5 +1,5 @@
 # Reliable version bump
-![Travis CI status](https://api.travis-ci.org/stanislavb/reliable-bump.svg)
+![Travis CI status](https://api.travis-ci.org/stanislavb/reliable-bump.svg)  
 ![Fist bump](http://i.imgur.com/VP8oXdh.jpg)
 
 ## Goal
