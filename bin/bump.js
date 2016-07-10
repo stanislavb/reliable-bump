@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+/* eslint strict:0 */
+'use strict';
 const spawn = require('child_process').spawnSync;
 const semver = require('semver');
 const fs = require('fs');
